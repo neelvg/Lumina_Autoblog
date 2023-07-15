@@ -26,13 +26,13 @@ pip install bard
 5. Clone your GitHub repository to Termux:
 
 ```
-git clone https://github.com/[your-username]/[your-repository].git
+git clone https://github.com/neelvg/Lumina_Autoblog.git
 ```
 
 6. Change directory to the cloned repository:
 
 ```
-cd [your-repository]
+cd Lumina_Autoblog
 ```
 
 7. Run the JavaScript file:
