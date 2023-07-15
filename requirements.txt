@@ -1,0 +1,19 @@
+```
+bard
+```
+
+This file tells other users what Python libraries they need to install in order to run your JavaScript file.
+
+The Bard AI library is the only library that is required to run your JavaScript file. You can install the Bard AI library using the following command:
+
+```
+pip install bard
+```
+
+Once you have installed the Bard AI library, you can run your JavaScript file in Termux using the following command:
+
+```
+python [file-name].js
+```
+
+The JavaScript file will now run and create new blog posts on your Blogger account.
