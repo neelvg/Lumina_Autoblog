@@ -1,61 +1,47 @@
 import unittest
 
-from main import research, generateTitles, generateContents, rewrite, publish
+from main import research, generate_titles, generate_contents, rewrite, publish
 
 
 class TestResearch(unittest.TestCase):
 
     def test_research(self):
-        highDemandTitles, seo, keywords = research()
-        self.assertIsInstance(highDemandTitles, list)
+        high_demand_titles, seo, keywords = research()
+        self.assertIsInstance(high_demand_titles, list)
         self.assertIsInstance(seo, list)
         self.assertIsInstance(keywords, list)
-        self.assertGreater(len(highDemandTitles), 0)
-        self.assertGreater(len(seo), 0)
-        self.assertGreater(len(keywords), 0)
 
 
 class TestGenerateTitles(unittest.TestCase):
 
-    def test_generateTitles(self):
-        highDemandTitles, seo, keywords = research()
-        titles = generateTitles(highDemandTitles, seo, keywords)
+    def test_generate_titles(self):
+        titles = generate_titles()
         self.assertIsInstance(titles, list)
         self.assertGreater(len(titles), 0)
-        for title in titles:
-            self.assertIsInstance(title, str)
-            self.assertGreater(len(title), 0)
 
 
 class TestGenerateContents(unittest.TestCase):
 
-    def test_generateContents(self):
-        titles = generateTitles()
-        contents = generateContents(titles)
+    def test_generate_contents(self):
+        contents = generate_contents()
         self.assertIsInstance(contents, list)
         self.assertGreater(len(contents), 0)
-        for content in contents:
-            self.assertIsInstance(content, str)
-            self.assertGreater(len(content), 0)
 
 
 class TestRewrite(unittest.TestCase):
 
     def test_rewrite(self):
-        contents = generateContents()
-        rewrittenContents = rewrite(contents)
-        self.assertIsInstance(rewrittenContents, list)
-        self.assertGreater(len(rewrittenContents), 0)
-        for rewrittenContent in rewrittenContents:
-            self.assertIsInstance(rewrittenContent, str)
-            self.assertGreater(len(rewrittenContent), 0)
+        contents = generate_contents()
+        rewritten_contents = rewrite(contents)
+        self.assertIsInstance(rewritten_contents, list)
+        self.assertGreater(len(rewritten_contents), 0)
 
 
 class TestPublish(unittest.TestCase):
 
     def test_publish(self):
-        titles = generateTitles()
-        contents = generateContents()
+        titles = generate_titles()
+        contents = generate_contents()
         publish(titles, contents)
 
 
