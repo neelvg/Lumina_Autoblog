@@ -11,31 +11,37 @@ here is the installation process on Termux:-
 apt update
 ```
 
-3. Type the following command to install Python:
+3. Type the following command to upgrade the package list
+
+```
+apt upgrade
+```
+
+4. Type the following command to install Python:
 
 ```
 apt install python
 ```
 
-4. Type the following command to install the Bard AI library:
+5. Type the following command to install the Bard AI library:
 
 ```
 pip install bard
 ```
 
-5. Clone your GitHub repository to Termux:
+6. Clone your GitHub repository to Termux:
 
 ```
 git clone https://github.com/neelvg/Lumina_Autoblog.git
 ```
 
-6. Change directory to the cloned repository:
+7. Change directory to the cloned repository:
 
 ```
 cd Lumina_Autoblog
 ```
 
-7. Run the JavaScript file:
+8. Run the JavaScript file:
 
 ```
 python main.py
