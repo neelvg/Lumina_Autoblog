@@ -38,7 +38,7 @@ cd Lumina_Autoblog
 7. Run the JavaScript file:
 
 ```
-python main.js
+python main.py
 ```
 
 The JavaScript file will now run and create new blog posts on your Blogger account.
