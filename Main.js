@@ -95,8 +95,24 @@ function main() {
 
     // If the title is not taken, create a new post on Blogger.
     if (!isTitleTaken) {
-      publish(titles, rewrittenContents);
+      publish(titles[i], rewrittenContents);
     }
   }
-    }
-   
+
+  // Set the Blogger blog's URL.
+  const bloggerURL = "https://www.my-blogger-blog.com";
+
+  // Set the Blogger blog's username and password.
+  const bloggerUsername = "my-username";
+  const bloggerPassword = "my-password";
+
+  // Create a new Blogger client.
+  const client = new Blogger({
+    bloggerURL,
+    bloggerUsername,
+    bloggerPassword,
+  });
+
+  // Publish the posts to Blogger.
+  client.publishPosts(titles, rewrittenContents);
+}
