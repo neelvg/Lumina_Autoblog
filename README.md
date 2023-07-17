@@ -5,47 +5,48 @@ This repository will automate the blogging in blogspot using Google bard AI it w
 here is the installation process on Termux:-
 
 1. Install Termux on your Android device.
-2. Open Termux and type the following command to update the package list:
+2. download the software files
+3. Open Termux and type the following command to update the package list:
 
 ```
 apt update
 ```
 
-3. Type the following command to upgrade the package list
+4. Type the following command to upgrade the package list
 
 ```
 apt upgrade
 ```
 
-4. Type the following command to install Python:
+5. Type the following command to install Python:
 
 ```
 apt install python
 ```
 
-5. Type the following command to install the Bard AI library:
+6. Type the following command to install the Bard AI library:
 
 ```
 pip install bard
 ```
-6. Type the following command to install the Bard AI library:
+7. Type the following command to install the Bard AI library:
 
 ```
 pip install pytrends
 ```
 
-7. Clone your GitHub repository to Termux:
+8. Clone your GitHub repository to Termux:
 
 ```
 git clone https://github.com/neelvg/Lumina_Autoblog.git
 ```
 
-8. Change directory to the cloned repository:
+9. Change directory to the cloned repository:
 
 ```
 cd Lumina_Autoblog
 ```
-9. Set the MAX_POSTS_PER_DAY variable to a reasonable value.
+10. Set the MAX_POSTS_PER_DAY variable to a reasonable value.
 
 ```
 export MAX_POSTS_PER_DAY= [no. of post per day]
