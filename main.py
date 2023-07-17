@@ -1,4 +1,3 @@
-
 import pytrends
 import bard
 
@@ -88,6 +87,15 @@ def publish():
   # Create a new post on Blogger.
   client.publish_posts(titles, contents)
 
+def check_plagiarism(content):
+  # This function checks if the content is plagiarism-free.
+
+  # Use the Google Search API to check for plagiarism.
+  is_plagiarism_free = google_search.is_plagiarism_free(content)
+
+  # Return the boolean value.
+  return is_plagiarism_free
+
 def main():
   # This function is the main function.
   # It calls the research(), generateTitles(), generateContents(), rewrite(), and publish() functions.
@@ -100,7 +108,7 @@ def main():
   # Loop through the number of posts to create.
   for i in range(num_posts):
     # Generate the titles, contents, and rewritten contents.
-    titles = generate_titles()
+    titles = generate_titles(seo, keywords)
     contents = generate_contents()
     rewritten_contents = rewrite(contents)
 
@@ -109,24 +117,12 @@ def main():
 
     # If the title is not taken, create a new post on Blogger.
     if not is_title_taken:
-  client.publish_posts(titles, rewritten_contents)
+      client.publish_posts(titles[i], rewritten_contents[i])
 
-  # Get the title and rewritten content for the current post.
-  title = titles[i]
-  rewritten_content = rewritten_contents[i]
+  # Print the number of posts created.
+  print(f"{num_posts} posts created.")
 
-  # Rewrite the rewritten content using the Bard API.
-  rewritten_content = bard.rewrite(rewritten_content)
-
-  # Check if the rewritten content is still plagiarism-free.
-  is_plagiarism_free = check_plagiarism(rewritten_content)
-
-  # If the rewritten content is plagiarism-free, publish the post.
-  if is_plagiarism_free:
-    client.publish_posts(title, rewritten_content)
-
-  # Otherwise, generate a new rewritten content.
-  else:
-    rewritten_content = bard.create_content(title)
-    
+if __name__ == "__main__":
+  main()
+  
   
