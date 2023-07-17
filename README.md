@@ -28,20 +28,30 @@ apt install python
 ```
 pip install bard
 ```
+6. Type the following command to install the Bard AI library:
 
-6. Clone your GitHub repository to Termux:
+```
+pip install pytrends
+```
+
+7. Clone your GitHub repository to Termux:
 
 ```
 git clone https://github.com/neelvg/Lumina_Autoblog.git
 ```
 
-7. Change directory to the cloned repository:
+8. Change directory to the cloned repository:
 
 ```
 cd Lumina_Autoblog
 ```
+9. Set the MAX_POSTS_PER_DAY variable to a reasonable value.
 
-8. Run the JavaScript file:
+```
+export MAX_POSTS_PER_DAY= [no. of post per day]
+```
+
+11. Run the JavaScript file:
 
 ```
 python main.py
