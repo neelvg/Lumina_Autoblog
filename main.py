@@ -1,3 +1,5 @@
+import pytrends
+
 MAX_POSTS_PER_DAY = 5
 
 def research():
@@ -28,10 +30,19 @@ def generate_titles():
   keywords = get_details("keywords")
 
   # Generate blog titles based on the high-demand titles, SEO, and keywords.
-  titles = generate_titles(high_demand_titles, seo, keywords)
+  high_demand_titles = []
+  for keyword in keywords:
+    title = "The Ultimate Guide to " + keyword
+    high_demand_titles.append(title)
 
-  # Return the list of titles.
-  return titles
+  # Modify the titles to make them more SEO-friendly.
+  for i in range(len(high_demand_titles)):
+    title = high_demand_titles[i]
+    title = title.lower()
+    title = title.replace(" ", "-")
+    high_demand_titles[i] = title
+
+  return high_demand_titles
 
 def generate_contents():
   # This function generates blogspot post contents on the generated blog titles.
@@ -67,7 +78,7 @@ def publish():
   contents = get_details("rewrittenContents")
 
   # Create a new post on Blogger.
-  create_post(titles, contents)
+  client.publish_posts(titles, contents)
 
 def main():
   # This function is the main function.
@@ -90,9 +101,9 @@ def main():
 
     # If the title is not taken, create a new post on Blogger.
     if not is_title_taken:
-      publish(titles[i], rewritten_contents)
+      client.publish_posts(titles, rewritten_contents)
 
-  # Set the Blogger blog's URL.
+    # Set the Blogger blog's URL.
   blogger_url = "https://www.my-blogger-blog.com"
 
   # Set the Blogger blog's username and password.
@@ -108,4 +119,7 @@ def main():
 
   # Publish the posts to Blogger.
   client.publish_posts(titles, rewritten_contents)
-    
+
+if __name__ == "__main__":
+  main()
+  
