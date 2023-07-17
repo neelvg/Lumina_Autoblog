@@ -1,4 +1,6 @@
+
 import pytrends
+import bard
 
 MAX_POSTS_PER_DAY = 5
 
@@ -51,7 +53,10 @@ def generate_contents():
   titles = get_details("titles")
 
   # Generate blogspot post contents based on the titles.
-  contents = generate_contents(titles)
+  contents = []
+  for title in titles:
+    content = bard.create_content(title)
+    contents.append(content)
 
   # Return the list of contents.
   return contents
@@ -63,7 +68,10 @@ def rewrite():
   contents = get_details("contents")
 
   # Rewrite the articles.
-  rewritten_contents = await bard.rewrite(contents)
+  rewritten_contents = []
+  for content in contents:
+    rewritten_content = bard.rewrite(content)
+    rewritten_contents.append(rewritten_content)
 
   # Return the list of rewritten contents.
   return rewritten_contents
@@ -101,25 +109,24 @@ def main():
 
     # If the title is not taken, create a new post on Blogger.
     if not is_title_taken:
-      client.publish_posts(titles, rewritten_contents)
-
-    # Set the Blogger blog's URL.
-  blogger_url = "https://www.my-blogger-blog.com"
-
-  # Set the Blogger blog's username and password.
-  blogger_username = "my-username"
-  blogger_password = "my-password"
-
-  # Create a new Blogger client.
-  client = Blogger({
-    blogger_url,
-    blogger_username,
-    blogger_password,
-  })
-
-  # Publish the posts to Blogger.
   client.publish_posts(titles, rewritten_contents)
 
-if __name__ == "__main__":
-  main()
+  # Get the title and rewritten content for the current post.
+  title = titles[i]
+  rewritten_content = rewritten_contents[i]
+
+  # Rewrite the rewritten content using the Bard API.
+  rewritten_content = bard.rewrite(rewritten_content)
+
+  # Check if the rewritten content is still plagiarism-free.
+  is_plagiarism_free = check_plagiarism(rewritten_content)
+
+  # If the rewritten content is plagiarism-free, publish the post.
+  if is_plagiarism_free:
+    client.publish_posts(title, rewritten_content)
+
+  # Otherwise, generate a new rewritten content.
+  else:
+    rewritten_content = bard.create_content(title)
+    
   
