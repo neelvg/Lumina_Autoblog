@@ -34,13 +34,16 @@ pip install bard
 ```
 pip install pytrends
 ```
-
 8. Clone your GitHub repository to Termux:
 
 ```
 git clone https://github.com/neelvg/Lumina_Autoblog.git
 ```
+9. Type the following command to change the permissions on the main.py file so that it is executable.
 
+```
+chmod +x main.py
+```
 9. Change directory to the cloned repository:
 
 ```
@@ -51,7 +54,6 @@ cd Lumina_Autoblog
 ```
 export MAX_POSTS_PER_DAY= [no. of post per day]
 ```
-
 11. Run the JavaScript file:
 
 ```
